@@ -1,0 +1,36 @@
+- name: clonar repositorio git neovim
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: instalando neovim e suas dependencias
+      package:
+        name:
+          - fzf
+          - chafa
+          - luarocks
+          - lua
+          - gcc
+          - make
+          - unzip
+          - wget
+          - curl
+          - gzip
+          - tar
+          - fd-find
+          - ripgrep
+          - neovim
+        state: present
+
+    - name: ativando repositorio atim/lazygit
+      command: dnf copr enable atim/lazygit -y
+
+    - name: instalando lazygit
+      package:
+        name: lazygit
+        state: present
+        
+    - name: clonando repositorio EduardoSilvaDiniz/neovim-from-scratch
+      git:
+        repo: "https://github.com/EduardoSilvaDiniz/neovim-from-scratch.git"
+        dest: ~/.config/nvim-test-ansible
