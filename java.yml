@@ -1,5 +1,7 @@
 - name: clonar repositorio git neovim
   hosts: localhost
+  vars:
+    sdk_shell: "$HOME/.sdkman/bin/sdkman-init.sh"
 
   tasks:
     - name: instalando SDKMAN
@@ -8,21 +10,13 @@
         executable: /bin/bash
 
     - name: Inicializando SDKMAN
-      shell: source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk version
-      args:
-        executable: /bin/bash
+      shell: "source {{ sdk_shell }} && sdk version"
 
     - name: Instalando Semeru(IBM) 8.0.452
-      shell: sdk install java 8.0.452-sem
-      args:
-        executable: /bin/bash
+      shell: "source {{ sdk_shell }} && sdk install java 8.0.452-sem"
 
     - name: Instalando GraalVM(GraalVM Community) 21.0.2
-      shell: sdk install java 21.0.2-graalce
-      args:
-        executable: /bin/bash
+      shell: "source {{ sdk_shell }} && sdk install java 21.0.2-graalce"
 
     - name: Instalando Quarkus CLI
-      shell: sdk install quarkus
-      args:
-        executable: /bin/bash
+      shell: "source {{ sdk_shell }} && sdk install quarkus"
