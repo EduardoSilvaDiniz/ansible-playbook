@@ -40,5 +40,7 @@
         state: started
         enabled: yes
 
-    - name: executando newgrp docker
-      command: newgrp docker
+    - name: Mensagem informativa
+      debug:
+        msg: 
+        - "Você precisa sair e entrar novamente (ou reiniciar o daemon do Docker e usar o comando newgrp conforme mencionado aqui) para que essas alterações tenham efeito. Depois, você pode verificar se suas alterações foram bem-sucedidas ao rodar o Docker sem o sudo."
