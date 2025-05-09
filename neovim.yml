@@ -9,7 +9,7 @@
       set_fact:
         user_home: "{{ lookup('env', 'HOME') }}"
 
-    - name: instalando neovim e suas dependencias
+    - name: instalando neovim e suas dependencias + golang, rust, nodejs, foot terminal
       package:
         name:
           - fzf
@@ -27,6 +27,10 @@
           - ripgrep
           - neovim
           - foot
+          - golang
+          - nodejs
+          - rust
+          - rustup
         state: present
 
     - name: ativando repositorio atim/lazygit
