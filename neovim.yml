@@ -31,7 +31,35 @@
           - nodejs
           - rust
           - rustup
+          - cargo
         state: present
+      name: instalando openssl
+      package:
+        name:
+          - openssl-devel 
+          - pkg-config
+      when: ansible_distribution == "Fedora"
+
+      name: instalando openssl
+      package:
+        name:
+          - openssl 
+          - pkg-config
+      when: ansible_distribution == "Arch linux"
+
+      name: instalando openssl
+      package:
+        name:
+          - libssl-dev 
+          - pkg-config
+      when: ansible_distribution == "Debian"
+
+      name: instalando openssl
+      package:
+        name:
+          - libssl-dev 
+          - pkg-config
+      when: ansible_distribution == "Ubuntu"
 
     - name: ativando repositorio atim/lazygit
       command: dnf copr enable atim/lazygit -y
