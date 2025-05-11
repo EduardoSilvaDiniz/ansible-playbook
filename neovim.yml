@@ -38,6 +38,7 @@
         name:
           - openssl-devel 
           - pkg-config
+          - ImageMagick-devel
       when: ansible_distribution == "Fedora"
 
       name: instalando openssl
@@ -45,6 +46,7 @@
         name:
           - openssl 
           - pkg-config
+          - imagemagick
       when: ansible_distribution == "Arch linux"
 
       name: instalando openssl
@@ -52,6 +54,7 @@
         name:
           - libssl-dev 
           - pkg-config
+          - libmagickwand-dev
       when: ansible_distribution == "Debian"
 
       name: instalando openssl
@@ -59,6 +62,7 @@
         name:
           - libssl-dev 
           - pkg-config
+          - libmagickwand-dev
       when: ansible_distribution == "Ubuntu"
 
     - name: ativando repositorio atim/lazygit
